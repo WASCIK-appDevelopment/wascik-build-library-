@@ -9,10 +9,15 @@ Path: `ai-assistant-funnel/`
 
 Reusable foundation for:
 
-- AI assistant lead-generation funnels
-- intake and qualification flows
-- reusable assistant interface patterns
-- customer-neutral integration guidance
+- AI website representatives
+- service-business lead qualification
+- affiliate and e-commerce shopping assistants
+- page-aware assistant behavior
+- normalized multi-brand catalogs
+- deterministic product recommendation reasoning
+- private owner AI/content studios
+- avatar/digital representative deployments
+- customer packaging and recurring-service models
 
 Start with `ai-assistant-funnel/README.md`.
 
