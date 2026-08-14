@@ -1,2 +1,2 @@
-# wascik-build-library-
+# wascik-build-library
 Reusable code
