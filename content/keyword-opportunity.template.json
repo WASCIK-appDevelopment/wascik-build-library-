@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "baseline-before-search-console-data",
+  "scoring": {
+    "scale": "1-5",
+    "fields": {
+      "businessValue": "Chance that qualified traffic creates meaningful business",
+      "brandRelevance": "Fit with verified services or content",
+      "attainability": "Relative chance for the current site",
+      "readiness": "Ability to support the search with a credible page"
+    }
+  },
+  "opportunities": [
+    {
+      "id": "",
+      "priority": "P0",
+      "cluster": "",
+      "primaryQuery": "",
+      "supportingQueries": [],
+      "intent": "",
+      "targetPath": "",
+      "scores": {
+        "businessValue": 0,
+        "brandRelevance": 0,
+        "attainability": 0,
+        "readiness": 0,
+        "total": 0
+      },
+      "nextAction": ""
+    }
+  ]
+}
