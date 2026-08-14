@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "status": "draft-for-owner-confirmation",
+  "site": {
+    "name": "",
+    "url": "",
+    "owner": "",
+    "primaryLanguage": "en-US",
+    "serviceAreas": []
+  },
+  "positioning": {
+    "primaryStatement": "",
+    "audiences": [],
+    "differentiators": []
+  },
+  "services": [],
+  "verifiedOffers": [],
+  "contentRules": {
+    "voice": [],
+    "mustDo": [
+      "Verify factual claims before publication",
+      "Keep major publishing changes behind owner approval"
+    ],
+    "mustAvoid": [
+      "Unsupported guarantees",
+      "Generic AI filler",
+      "Repetitive doorway pages"
+    ]
+  },
+  "workflow": {
+    "publishingApprovalRequired": true,
+    "productionAutoDeployAllowed": false
+  },
+  "confirmationsNeeded": []
+}
