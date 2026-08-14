@@ -9,17 +9,25 @@ Path: `ai-assistant-funnel/`
 
 Reusable foundation for:
 
-- AI website representatives
-- service-business lead qualification
-- affiliate and e-commerce shopping assistants
-- page-aware assistant behavior
-- normalized multi-brand catalogs
-- deterministic product recommendation reasoning
-- private owner AI/content studios
-- avatar/digital representative deployments
-- customer packaging and recurring-service models
+- AI assistant lead-generation funnels
+- intake and qualification flows
+- reusable assistant interface patterns
+- customer-neutral integration guidance
 
 Start with `ai-assistant-funnel/README.md`.
+
+### Affiliate Storefront
+Path: `affiliate-storefront/`
+
+Reusable foundation for:
+
+- multi-brand affiliate catalogs
+- merchant navigation and dedicated brand routes
+- product and event cards
+- affiliate and ticket-resale disclosures
+- reliable local-image handling in Next.js
+
+Start with `affiliate-storefront/README.md`.
 
 ## Library rule
 
