@@ -14,7 +14,12 @@ The design separates the visible representative from the intelligence behind it 
 - `pageContext.ts` — configurable pathname-to-role resolver. Lets one assistant behave differently across service, store, merchant, private-owner, and general pages.
 - `catalog.ts` — generic normalized catalog adapter helpers for product/service catalogs.
 - `shoppingReasoner.ts` — deterministic intent scoring and recommendation logic that only recommends supplied catalog items.
+- `widget/RepresentativeWidget.tsx` — reusable standing representative + speech-bubble widget architecture.
 - `api-contracts.md` — suggested server API shapes for chat, shopping, page context, and lead capture.
+- `openaiConfig.ts` — reusable server-side OpenAI environment/config helper.
+- `health-route-example.ts` — safe health endpoint pattern that checks configuration without exposing secrets.
+- `openai-live-route-example.ts` — reusable Responses API route with minimal reasoning effort, safer output budget, and grounded-response rules.
+- `setup-and-troubleshooting.md` — deployment, billing, Codespaces/iPhone, API-key, and error-diagnosis checklist.
 - `security-patterns.md` — reusable owner-only studio/authentication guidelines.
 - `sales-packaging.md` — ways WASCIK can package and sell this capability to customers.
 
@@ -35,6 +40,10 @@ The design separates the visible representative from the intelligence behind it 
 - Use consent before creating an avatar or voice modeled after a real person.
 - Keep business knowledge tenant-specific when deploying this for multiple clients.
 - Prefer structured product/service retrieval before generative response writing.
+- Add a safe configuration health check before diagnosing model failures.
+- Keep local and production API billing separate from ChatGPT subscriptions.
+- For reasoning-capable models, do not starve visible responses with overly small output-token limits.
+- Default live-site widgets to a collapsed state so the assistant does not cover page content until invited.
 
 ## Customer deployment model
 
@@ -48,5 +57,6 @@ Each customer can share the same core engine while supplying their own:
 - lead fields and handoff destinations
 - booking or CRM integrations
 - disclosure/compliance text
+- OpenAI project/key and billing policy
 
 This module is intentionally framework-friendly, but the current examples are TypeScript-first and fit Next.js/React deployments particularly well.
