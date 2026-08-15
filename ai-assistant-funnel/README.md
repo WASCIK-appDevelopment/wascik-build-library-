@@ -19,6 +19,9 @@ The design separates the visible representative from the intelligence behind it 
 - `openaiConfig.ts` — reusable server-side OpenAI environment/config helper.
 - `health-route-example.ts` — safe health endpoint pattern that checks configuration without exposing secrets.
 - `openai-live-route-example.ts` — reusable Responses API route with minimal reasoning effort, safer output budget, and grounded-response rules.
+- `leadQualification.ts` — lightweight Stage 5 session-aware lead qualification that requires only project type, business/project context, and one contact method before handoff.
+- `supabaseLeadPersistence.ts` — generic Stage 6 server-side Supabase lead persistence with deduplication support and no tenant-specific credentials.
+- `stage6-lead-database.md` — reusable persistent lead database, RLS, health-check, owner handoff, minimal-alert email, and mobile implementation guidance.
 - `setup-and-troubleshooting.md` — deployment, billing, Codespaces/iPhone, API-key, and error-diagnosis checklist.
 - `security-patterns.md` — reusable owner-only studio/authentication guidelines.
 - `sales-packaging.md` — ways WASCIK can package and sell this capability to customers.
@@ -27,10 +30,12 @@ The design separates the visible representative from the intelligence behind it 
 
 1. Browser representative reads the current pathname.
 2. Page-context resolver determines the assistant role and allowed knowledge scope.
-3. Server endpoint receives user message + page context.
+3. Server endpoint receives user message + page context + short session memory.
 4. Structured reasoning retrieves approved business/catalog data.
-5. AI model may phrase the response, but should not invent products, prices, policies, or company claims.
-6. Lead, booking, purchase, or human-handoff action is returned as a structured next step.
+5. Lead qualifier remembers already supplied details and asks at most one missing core question at a time.
+6. AI model may phrase the response, but should not invent products, prices, policies, or company claims.
+7. Once the lead reaches `handoff-ready`, a server-only persistence layer writes the lead to the private database.
+8. Lead, booking, purchase, or human-handoff action is returned as a structured next step.
 
 ## Important implementation rules
 
@@ -40,10 +45,14 @@ The design separates the visible representative from the intelligence behind it 
 - Use consent before creating an avatar or voice modeled after a real person.
 - Keep business knowledge tenant-specific when deploying this for multiple clients.
 - Prefer structured product/service retrieval before generative response writing.
-- Add a safe configuration health check before diagnosing model failures.
+- Add a safe configuration health check before diagnosing model failures; for databases, test a harmless real read rather than only checking whether a key exists.
 - Keep local and production API billing separate from ChatGPT subscriptions.
 - For reasoning-capable models, do not starve visible responses with overly small output-token limits.
 - Default live-site widgets to a collapsed state so the assistant does not cover page content until invited.
+- On iPhone Safari, use 16px or larger form-input text to avoid automatic zoom and constrain floating UI to the mobile viewport.
+- Do not turn lead qualification into an interrogation. Treat budget and timeline as optional unless the business specifically requires them.
+- Store full lead details in the private database/owner console; email notifications should remain minimal alerts.
+- Deduplicate handoff-ready leads so later messages in the same conversation do not create repeated database rows.
 
 ## Customer deployment model
 
@@ -55,6 +64,7 @@ Each customer can share the same core engine while supplying their own:
 - FAQ and approved knowledge
 - route/page rules
 - lead fields and handoff destinations
+- private database project and credentials
 - booking or CRM integrations
 - disclosure/compliance text
 - OpenAI project/key and billing policy
