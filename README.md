@@ -34,6 +34,19 @@ Reusable foundation for:
 
 Start with `affiliate-storefront/README.md`.
 
+### Conversion Thank-You Page
+Path: `conversion-thank-you-page/`
+
+Reusable foundation for:
+
+- post-inquiry and post-purchase confirmation pages
+- Google Ads and analytics destination-based conversion tracking
+- search-safe `noindex` conversion routes
+- responsive owner-portrait and brand presentation
+- safeguards against false conversions and private URL data
+
+Start with `conversion-thank-you-page/README.md`.
+
 ## Library rule
 
 Reusable modules should stay customer-neutral. Put customer-specific branding, affiliate IDs, credentials, private business information, and deployment secrets in the customer project—not in this library.
