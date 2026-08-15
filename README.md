@@ -21,6 +21,21 @@ Reusable foundation for:
 
 Start with `ai-assistant-funnel/README.md`.
 
+### Owner Console + First-Party Analytics
+Path: `owner-console-analytics/`
+
+Reusable foundation for:
+
+- private owner dashboards
+- confirmation-gated AI database actions
+- CRM status/note/follow-up workflows
+- first-party outbound affiliate/referral click tracking
+- site/page visit analytics
+- Codespaces secret recovery
+- safe consolidation of divergent feature branches with newer `main` work
+
+Start with `owner-console-analytics/README.md`.
+
 ### Affiliate Storefront
 Path: `affiliate-storefront/`
 
