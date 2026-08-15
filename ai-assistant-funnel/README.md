@@ -25,6 +25,7 @@ The design separates the visible representative from the intelligence behind it 
 - `setup-and-troubleshooting.md` — deployment, billing, Codespaces/iPhone, API-key, and error-diagnosis checklist.
 - `security-patterns.md` — reusable owner-only studio/authentication guidelines.
 - `sales-packaging.md` — ways WASCIK can package and sell this capability to customers.
+- `../owner-console-analytics/` — reusable private owner-console, confirmation-gated action, first-party analytics, secret-recovery, and branch-consolidation patterns extracted after Stage 6 became operational.
 
 ## Architecture
 
@@ -34,8 +35,9 @@ The design separates the visible representative from the intelligence behind it 
 4. Structured reasoning retrieves approved business/catalog data.
 5. Lead qualifier remembers already supplied details and asks at most one missing core question at a time.
 6. AI model may phrase the response, but should not invent products, prices, policies, or company claims.
-7. Once the lead reaches `handoff-ready`, a server-only persistence layer writes the lead to the private database.
-8. Lead, booking, purchase, or human-handoff action is returned as a structured next step.
+7. As soon as a usable contact method is present, a server-only persistence layer may create/update the lead; business/project details can continue enriching the same row afterward.
+8. Email may send a minimal owner alert after durable storage succeeds, but the private database/owner console remains the source of truth.
+9. Owner-facing AI actions should be proposed first, shown in a visually distinct confirmation state, and written only after explicit authenticated owner confirmation.
 
 ## Important implementation rules
 
@@ -46,13 +48,18 @@ The design separates the visible representative from the intelligence behind it 
 - Keep business knowledge tenant-specific when deploying this for multiple clients.
 - Prefer structured product/service retrieval before generative response writing.
 - Add a safe configuration health check before diagnosing model failures; for databases, test a harmless real read rather than only checking whether a key exists.
+- For AI providers, distinguish key authentication from a real model request: authentication can succeed while quota/billing/model access still fails.
 - Keep local and production API billing separate from ChatGPT subscriptions.
 - For reasoning-capable models, do not starve visible responses with overly small output-token limits.
 - Default live-site widgets to a collapsed state so the assistant does not cover page content until invited.
 - On iPhone Safari, use 16px or larger form-input text to avoid automatic zoom and constrain floating UI to the mobile viewport.
 - Do not turn lead qualification into an interrogation. Treat budget and timeline as optional unless the business specifically requires them.
+- Treat budget as planning information, not an automatic rejection criterion, unless an explicit business rule says otherwise.
+- Save a lead when a usable contact method is present if the business wants immediate capture; do not force a second permission loop after the visitor has already requested contact.
 - Store full lead details in the private database/owner console; email notifications should remain minimal alerts.
-- Deduplicate handoff-ready leads so later messages in the same conversation do not create repeated database rows.
+- Deduplicate leads so later messages in the same conversation enrich the existing row instead of creating repeated rows.
+- Preserve existing CRM workflow status during enrichment; an upsert should not reset Contacted/In Progress/Closed back to New.
+- Persist an alert-delivery marker (for example `alert_sent_at`) after successful notification and use database-driven idempotency where duplicate alerts matter.
 
 ## Customer deployment model
 
