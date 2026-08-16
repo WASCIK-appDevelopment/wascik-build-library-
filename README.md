@@ -47,7 +47,11 @@ Reusable foundation for:
 - session-only seen/skipped-product exclusion
 - image-required candidate review
 - conditional ticket location/date filtering
-- confirmation-gated catalog publication
+- confirmation-gated catalog publication and removal
+- merchant-page product health monitoring and duplicate review
+- persistent product/brand warning ignores
+- merchant metadata thumbnail repair
+- separate ready-to-publish and complete published-product inventories
 
 Start with `affiliate-search-discovery/README.md`.
 
