@@ -36,6 +36,21 @@ Reusable foundation for:
 
 Start with `owner-console-analytics/README.md`.
 
+### Affiliate Search + Review Discovery
+Path: `affiliate-search-discovery/`
+
+Reusable foundation for:
+
+- server-only affiliate-network product search
+- multi-brand and multi-category batch planning
+- owner-selected result counts
+- session-only seen/skipped-product exclusion
+- image-required candidate review
+- conditional ticket location/date filtering
+- confirmation-gated catalog publication
+
+Start with `affiliate-search-discovery/README.md`.
+
 ### Affiliate Storefront
 Path: `affiliate-storefront/`
 
