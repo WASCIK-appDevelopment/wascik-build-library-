@@ -81,6 +81,19 @@ Reusable foundation for:
 
 Start with `conversion-thank-you-page/README.md`.
 
+### Netlify Deployment Safeguards
+Path: `netlify-deployment-safeguards/`
+
+Reusable guidance for:
+
+- importing production environment variables into Netlify
+- keeping GitHub/Codespaces secrets separate from Netlify
+- preventing public `SUPABASE_URL` values from causing false secret-scan failures
+- preserving protection for Supabase service-role keys and other credentials
+- manual cleared-cache production deployment while automatic publishing remains locked
+
+Start with `netlify-deployment-safeguards/README.md`.
+
 ## Library rule
 
 Reusable modules should stay customer-neutral. Put customer-specific branding, affiliate IDs, credentials, private business information, and deployment secrets in the customer project—not in this library.
