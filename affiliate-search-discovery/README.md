@@ -11,6 +11,8 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 - session-only seen/skipped-product exclusion
 - approval queues that do not publish automatically
 - merchant-page product health checks after affiliate redirects
+- false-positive-resistant product availability checking
+- reversible suppression and restoration of original/hard-coded products
 - product- and brand-level health-warning ignores
 - duplicate detection and review
 - missing-thumbnail repair from merchant metadata
