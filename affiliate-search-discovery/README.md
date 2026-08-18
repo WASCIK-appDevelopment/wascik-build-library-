@@ -14,6 +14,9 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 - product- and brand-level health-warning ignores
 - duplicate detection and review
 - missing-thumbnail repair from merchant metadata
+- owner-supplied photo uploads for image-less Ready Products
+- malformed and explicitly invalid affiliate-link rejection
+- partial bulk publication that publishes clean products and leaves duplicates for review
 - separate ready-to-publish and published-product inventories
 - confirmation-gated publication and removal
 - conditional ticket location and date filters when a ticket provider supports them
@@ -25,6 +28,10 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 - `session-review-state.example.ts` - session-only seen, skipped, and selected-product state.
 - `merchant-health-scanner.example.ts` - redirect-aware merchant checks, homepage safeguards, and duplicate keys.
 - `catalog-image-repair.example.ts` - merchant metadata image extraction for missing thumbnails.
+- `ready-product-image-upload.example.tsx` - mobile-friendly blank-thumbnail upload control.
+- `ready-product-image-upload-route.example.ts` - authenticated storage and Ready Product persistence.
+- `validated-affiliate-links.example.ts` - syntax and explicit malformed-link filtering.
+- `partial-bulk-publication.example.ts` - publish clean products while retaining duplicates.
 - `health-ignore-schema.sql` - service-role-only ignore and image-override tables.
 - `published-catalog-workflow.md` - durable state separation, placement, and confirmation rules.
 - `implementation-notes.md` - security, UX, provider limitations, and publication-gate rules.
@@ -41,6 +48,10 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 8. Preserve session-only exclusions until sign-out; durable rejects or ignores require explicit business actions.
 9. Separate approval, publication, health review, and unpublication into distinct owner states.
 10. Require confirmation and server authorization before every durable catalog mutation.
-11. Do not imply that a general product API provides live ticket inventory. State/date search requires event data from the connected provider.
+11. Validate affiliate links before review, but do not treat a timeout or merchant bot block as proof that a link is invalid.
+12. Offer manual image upload only on durable Ready Products after the owner can inspect the destination link.
+13. During bulk publication, publish nonduplicates and leave duplicate candidates in Ready Products for explicit review or removal.
+14. Keep every public destination route in both the client destination list and the server allowlist.
+15. Do not imply that a general product API provides live ticket inventory. State/date search requires event data from the connected provider.
 
 This module intentionally excludes customer names, account IDs, credentials, private emails, affiliate tracking IDs, and provider-specific tenant identifiers.
