@@ -49,3 +49,55 @@ export async function discardMalformedCandidates<T extends { affiliateUrl: strin
   })));
   return checked.filter(({ usable }) => usable).map(({ item }) => item);
 }
+
+
+const TRACKING_DOMAINS = [
+  "pxf.io", "sjv.io", "jdoqocy.com", "tkqlhce.com", "anrdoezrs.net",
+  "dpbolvw.net", "kqzyfj.com", "evyy.net", "prf.hn",
+];
+
+export function isAffiliateTrackingUrl(value: string) {
+  const normalized = normalizeAffiliateUrl(value);
+  if (!normalized) return false;
+  const host = new URL(normalized).hostname.toLowerCase();
+  return TRACKING_DOMAINS.some((domain) => host === domain || host.endsWith(`.${domain}`));
+}
+
+/**
+ * Some network product APIs already return an item-specific affiliate URL in
+ * the product URL field. Reusing it directly prevents:
+ *
+ * campaignTrackingUrl?u=itemTrackingUrl?u=merchantUrl
+ *
+ * which can produce dead or malformed redirects.
+ */
+export function buildAffiliateUrl(input: {
+  productUrl?: string;
+  itemTrackingUrl?: string;
+  campaignTrackingUrl?: string;
+}) {
+  if (input.productUrl && isAffiliateTrackingUrl(input.productUrl)) {
+    return normalizeAffiliateUrl(input.productUrl);
+  }
+  if (input.itemTrackingUrl) {
+    return normalizeAffiliateUrl(input.itemTrackingUrl);
+  }
+  if (!input.productUrl || !input.campaignTrackingUrl) return "";
+
+  const campaign = normalizeAffiliateUrl(input.campaignTrackingUrl);
+  const destination = normalizeAffiliateUrl(input.productUrl);
+  if (!campaign || !destination) return "";
+  const url = new URL(campaign);
+  url.searchParams.set("u", destination);
+  return url.toString();
+}
+
+/**
+ * A 404 returned by the tracking host itself is inconclusive: bot protection
+ * or server-side monitoring may not be allowed. A 404 after the redirect has
+ * reached the merchant host is a real dead-product signal.
+ */
+export function confirmedMerchantNotFound(startUrl: string, finalUrl: string, status: number) {
+  if (status !== 404 && status !== 410) return false;
+  return !(isAffiliateTrackingUrl(startUrl) && isAffiliateTrackingUrl(finalUrl));
+}
