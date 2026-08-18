@@ -26,13 +26,13 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 - `network-product-search.example.ts` - provider-neutral search and normalization.
 - `batch-matrix.example.ts` - Cartesian brand/category planning so every pair gets its own quota.
 - `session-review-state.example.ts` - session-only seen, skipped, and selected-product state.
-- `merchant-health-scanner.example.ts` - redirect-aware merchant checks, homepage safeguards, and duplicate keys.
+- `merchant-health-scanner.example.ts` - redirect-aware merchant checks, product-specific availability parsing, and duplicate keys.
 - `catalog-image-repair.example.ts` - merchant metadata image extraction for missing thumbnails.
 - `ready-product-image-upload.example.tsx` - mobile-friendly blank-thumbnail upload control.
 - `ready-product-image-upload-route.example.ts` - authenticated storage and Ready Product persistence.
 - `validated-affiliate-links.example.ts` - syntax and explicit malformed-link filtering.
 - `partial-bulk-publication.example.ts` - publish clean products while retaining duplicates.
-- `health-ignore-schema.sql` - service-role-only ignore and image-override tables.
+- `health-ignore-schema.sql` - service-role-only ignore, image-override, and original-product suppression tables.
 - `published-catalog-workflow.md` - durable state separation, placement, and confirmation rules.
 - `implementation-notes.md` - security, UX, provider limitations, and publication-gate rules.
 
@@ -53,5 +53,7 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 13. During bulk publication, publish nonduplicates and leave duplicate candidates in Ready Products for explicit review or removal.
 14. Keep every public destination route in both the client destination list and the server allowlist.
 15. Do not imply that a general product API provides live ticket inventory. State/date search requires event data from the connected provider.
+16. Never flag generic “out of stock” wording found anywhere in a page; require product-specific availability evidence and honor positive InStock signals.
+17. Remove original products with reversible suppression records so company sections, categories, routes, and sort placement remain intact.
 
 This module intentionally excludes customer names, account IDs, credentials, private emails, affiliate tracking IDs, and provider-specific tenant identifiers.
