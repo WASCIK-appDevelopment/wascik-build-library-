@@ -49,6 +49,8 @@ Reusable foundation for:
 - conditional ticket location/date filtering
 - confirmation-gated catalog publication and removal
 - merchant-page product health monitoring and duplicate review
+- false-positive-resistant product availability checking
+- reversible suppression/restoration of original catalog products
 - persistent product/brand warning ignores
 - merchant metadata thumbnail repair
 - separate ready-to-publish and complete published-product inventories
