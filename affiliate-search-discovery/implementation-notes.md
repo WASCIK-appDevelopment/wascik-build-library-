@@ -18,7 +18,22 @@ Store displayed IDs, skipped candidates, chosen candidates, filters, and current
 
 ## Merchant-page health
 
-Resolve affiliate redirects and inspect the final merchant destination. Treat 404/410 as strong failure signals. Apply sold-out or unavailable text detection only on a product-specific path; a merchant homepage can contain unrelated sold-out text. Surface possible duplicates for owner review instead of silently deleting them.
+Resolve affiliate redirects and inspect the final merchant destination. A tracking host may return 404/410 to server monitoring while the same affiliate link still works in a browser; treat an unresolved tracking-host failure as **review**, not proof of removal.
+
+Never search the entire HTML document for generic phrases such as “out of stock” or “sold out.” Those words may belong to recommendations, hidden variants, menus, scripts, or unrelated products. Accept stock warnings only from:
+
+- structured product availability data such as Schema.org `OutOfStock`, `SoldOut`, or `Discontinued`; or
+- a product-specific availability/status region in the rendered HTML.
+
+A structured `InStock`, `PreOrder`, or equivalent positive signal overrides stray stock wording. Page-level “product not found” and “discontinued” messages may remain strong signals after the checker reaches a product-specific merchant URL.
+
+Timeouts, bot blocks, incomplete HTML, and network failures are inconclusive. Bring those records to the owner as review items; never auto-remove them.
+
+## Original-product suppression and restoration
+
+Manage pre-existing or hard-coded products with stable product keys and a service-role-only suppression table. Filter suppressions from every unified catalog consumer: public storefront, Published Products, health scanning, duplicate checks, and AI catalog answers.
+
+Removing an original product inserts or updates one suppression record after confirmation. Restoring it deletes that suppression record. Do not remove source objects, company sections, category mappings, or sort metadata during routine owner operations.
 
 ## Image quality and repair
 
@@ -30,7 +45,7 @@ Only expose state/date filters when the selected provider returns structured eve
 
 ## Approval, publication, and removal
 
-Choosing a product creates a review queue entry. Durable approval, publication, unpublication, and removal are separate actions. Each should use an exact proposal, short-lived confirmation token, owner authentication, server validation, and an audit result. Place published products inside their brand section and nearest matching category—not after disclosures or footers.
+Choosing a product creates a review queue entry. Durable approval, publication, unpublication, removal, and restoration are separate actions. Each should use an exact proposal, short-lived confirmation token, owner authentication, server validation, and an audit result. Place published products inside their brand section and nearest matching category—not after disclosures or footers.
 
 ## Security
 
@@ -39,5 +54,5 @@ Choosing a product creates a review queue entry. Durable approval, publication, 
 - Cap brands, categories, result counts, exclusions, redirects, response bytes, and timeouts.
 - Avoid logging secrets or full authorization headers.
 - Preserve third-party affiliate destinations and tracking parameters.
-- Keep ignore and image-override tables service-role-only.
+- Keep ignore, image-override, and suppression tables service-role-only.
 - Keep customer identifiers and affiliate IDs outside this reusable module.
