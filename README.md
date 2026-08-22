@@ -1,8 +1,24 @@
 # WASCIK Build Library
 
-Reusable code, architecture patterns, and implementation guides for WASCIK App Development projects.
+Reusable code, architecture patterns, implementation guides, and selected WASCIK project-control records.
 
 ## Available modules
+
+### Growth Engine Marketing + Conversion
+Path: `growth-engine-marketing/`
+
+Reusable foundation for:
+
+- conversion-focused service funnels
+- primary-offer and low-pressure CTA design
+- first-party funnel-event tracking
+- UTM/campaign attribution
+- persistent social-ad workspaces
+- saved ad and media libraries
+- affiliate campaign/subscription attribution
+- parallel multi-agent Git branch collaboration
+
+Start with `growth-engine-marketing/README.md`.
 
 ### AI Assistant Funnel
 Path: `ai-assistant-funnel/`
@@ -96,6 +112,14 @@ Reusable guidance for:
 
 Start with `netlify-deployment-safeguards/README.md`.
 
+## Project control records
+
+Operational records capture WASCIK-specific project state without storing credentials or private secrets.
+
+Latest record:
+
+- `project-control/2026-08-21-growth-engine-status.md` — current Growth Engine direction, funnel conversion work, tracking, Social & Ads capabilities, affiliate subscription attribution, branch workflow, indexing status, and the exact next-work sequence.
+
 ## Library rule
 
-Reusable modules should stay customer-neutral. Put customer-specific branding, affiliate IDs, credentials, private business information, and deployment secrets in the customer project—not in this library.
+Reusable modules should stay customer-neutral. Put customer-specific branding, affiliate IDs, credentials, private business information, and deployment secrets in the customer project—not in reusable library modules. Project-control records may name WASCIK-specific implementation state, but must still exclude credentials and private secrets.
