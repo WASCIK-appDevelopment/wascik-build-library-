@@ -20,6 +20,23 @@ Reusable foundation for:
 
 Start with `growth-engine-marketing/README.md`.
 
+### Social Ads Creative System
+Path: `social-ads-creative-system/`
+
+Reusable foundation for:
+
+- prompt-first AI photo-ad generation
+- owner identity and exact-product fidelity
+- multi-pass image QC and identity repair
+- deterministic typography/compositor layers
+- automatic benefit callouts and platform-aware CTAs
+- brand-level and individual product/event affiliate campaigns
+- private photo/ad/work-in-progress media libraries
+- AI usage/cost monitoring and rate-limit handling
+- versioned creative-engine rollouts with rollback points
+
+Start with `social-ads-creative-system/README.md`.
+
 ### AI Assistant Funnel
 Path: `ai-assistant-funnel/`
 
