@@ -25,17 +25,32 @@ Path: `social-ads-creative-system/`
 
 Reusable foundation for:
 
-- prompt-first AI photo-ad generation
-- owner identity and exact-product fidelity
-- multi-pass image QC and identity repair
+- prompt-first social-ad generation
+- owner identity/product fidelity controls
+- Creative Director planning
+- multi-pass visual QC and repair
 - deterministic typography/compositor layers
-- automatic benefit callouts and platform-aware CTAs
-- brand-level and individual product/event affiliate campaigns
-- private photo/ad/work-in-progress media libraries
-- AI usage/cost monitoring and rate-limit handling
-- versioned creative-engine rollouts with rollback points
+- affiliate brand and product/event campaigns
+- platform-aware CTAs
+- AI usage/rate-limit handling
 
 Start with `social-ads-creative-system/README.md`.
+
+### Supabase Free-Tier Operations
+Path: `supabase-free-tier-operations/`
+
+Reusable foundation for:
+
+- free-tier-first database/storage architecture
+- device/iCloud-first permanent media handling
+- internal storage caps below provider limits
+- egress protection
+- work-in-progress media policies
+- photo-library cleanup and byte budgets
+- overwrite-in-place temporary voice/media
+- analytics/database growth controls
+
+Start with `supabase-free-tier-operations/README.md`.
 
 ### AI Assistant Funnel
 Path: `ai-assistant-funnel/`
