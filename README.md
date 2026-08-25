@@ -4,6 +4,22 @@ Reusable code, architecture patterns, implementation guides, and selected WASCIK
 
 ## Available modules
 
+### Digital Product Operations + Guided Workspace
+Path: `digital-product-operations/`
+
+Reusable foundation for:
+
+- structured workbook and guided-system templates
+- customer project instances and autosaved answers
+- product, asset, QA, release, pricing, and bundle controls
+- fillable PDF, editable-document, and app-workspace delivery
+- confirmation-gated publication
+- secure customer entitlements and downloads
+- AI suggestions that remain separate until human acceptance
+- staged migration from downloadable products to an owner console and customer application
+
+Start with `digital-product-operations/README.md`.
+
 ### Growth Engine Marketing + Conversion
 Path: `growth-engine-marketing/`
 
@@ -151,6 +167,7 @@ Operational records capture WASCIK-specific project state without storing creden
 Latest record:
 
 - `project-control/2026-08-21-growth-engine-status.md` — current Growth Engine direction, funnel conversion work, tracking, Social & Ads capabilities, affiliate subscription attribution, branch workflow, indexing status, and the exact next-work sequence.
+- `project-control/2026-08-25-digital-products-versa-foundation.md` — current WASCIK Digital Solutions author-product inventory, storefront checkpoint, and the controlled path for reusing the products in the Owner Console and future Versa application.
 
 ## Library rule
 
