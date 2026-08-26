@@ -164,10 +164,11 @@ Start with `netlify-deployment-safeguards/README.md`.
 
 Operational records capture WASCIK-specific project state without storing credentials or private secrets.
 
-Latest record:
+Latest records:
 
 - `project-control/2026-08-21-growth-engine-status.md` — current Growth Engine direction, funnel conversion work, tracking, Social & Ads capabilities, affiliate subscription attribution, branch workflow, indexing status, and the exact next-work sequence.
 - `project-control/2026-08-25-digital-products-versa-foundation.md` — current WASCIK Digital Solutions author-product inventory, storefront checkpoint, and the controlled path for reusing the products in the Owner Console and future Versa application.
+- `project-control/2026-08-25-small-business-forms-bundle.md` — completed Small-Business Forms Bundle release, verified package and QA facts, Business Tools storefront placement, pricing state, repository checkpoint, and remaining checkout/deployment controls.
 
 ## Library rule
 

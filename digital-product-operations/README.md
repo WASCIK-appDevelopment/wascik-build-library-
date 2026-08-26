@@ -157,6 +157,22 @@ Store AI suggestions separately from accepted customer answers until the custome
 - Keep bundle pricing separate from file contents.
 - Grant entitlements per included product so customers can access individual workspaces and downloads.
 
+## Multi-form release pattern
+
+For products made from a numbered collection of reusable forms, preserve one stable inventory across every delivery format.
+
+- Give every form a permanent code, category, title, and order.
+- Build a combined fillable edition for customers who want one organized system.
+- Build a combined editable edition when deeper customization is part of the offer.
+- Include individual editable files when customers may need to reuse or share one form at a time.
+- Generate a product manifest and interactive-field manifest from the same inventory.
+- Verify page count, field count, field naming, saved-value persistence, cover placement, and ZIP contents before assigning `sellable` status.
+- Keep quick-start and license documents inside the customer package.
+- Keep seller launch materials, pricing rules, promotional limits, and operational manifests outside the customer download.
+- Publish only approved preview assets to a public storefront; protect the release files behind verified payment and entitlement delivery.
+
+A complete customer package and a functioning storefront card are separate checkpoints. A form bundle may be `sellable` while checkout and production publication remain incomplete.
+
 ## Security and tenancy
 
 - Put organization/customer ownership on every durable project and entitlement record.
