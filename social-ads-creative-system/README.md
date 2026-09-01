@@ -14,6 +14,7 @@ Reusable architecture extracted from the WASCIK Social & Advertising owner-conso
 - private photo and finished-ad libraries
 - platform-aware CTA behavior
 - AI usage/cost visibility
+- device-first finished-ad export with low-egress working media
 - mobile-first owner-console UX
 
 ## Core architecture
@@ -285,6 +286,8 @@ Important distinction:
 - it is not automatically the provider's authoritative prepaid-credit balance
 
 Keep normal API keys and organization Admin API keys separate. Store development secrets in the development secret store and production secrets in the deployment platform environment. Do not put raw secrets in the repository.
+
+For a private owner console, fetch provider organization usage once when the authenticated console session opens, reuse it across module navigation, and expose a manual Refresh action. Do not poll every 10–15 minutes when the owner only needs an opening snapshot.
 
 ## Rate-limit handling
 
