@@ -61,6 +61,8 @@ Reusable foundation for:
 - device/iCloud-first permanent media handling
 - internal storage caps below provider limits
 - egress protection
+- billing-anchor monthly egress estimates
+- request-on-entry provider usage snapshots with manual refresh
 - work-in-progress media policies
 - photo-library cleanup and byte budgets
 - overwrite-in-place temporary voice/media
@@ -93,6 +95,9 @@ Reusable foundation for:
 - private owner dashboards
 - confirmation-gated AI database actions
 - CRM status/note/follow-up workflows
+- secure passcode auto-submit and recovery patterns
+- repeat-contact lead history without overwrites
+- shared liquid-glass navigation and stable iPhone detail drawers
 - first-party outbound affiliate/referral click tracking
 - site/page visit analytics
 - Codespaces secret recovery
@@ -169,6 +174,7 @@ Latest records:
 - `project-control/2026-08-21-growth-engine-status.md` — current Growth Engine direction, funnel conversion work, tracking, Social & Ads capabilities, affiliate subscription attribution, branch workflow, indexing status, and the exact next-work sequence.
 - `project-control/2026-08-25-digital-products-versa-foundation.md` — current WASCIK Digital Solutions author-product inventory, storefront checkpoint, and the controlled path for reusing the products in the Owner Console and future Versa application.
 - `project-control/2026-08-25-small-business-forms-bundle.md` — completed Small-Business Forms Bundle release, verified package and QA facts, Business Tools storefront placement, pricing state, repository checkpoint, and remaining checkout/deployment controls.
+- `project-control/2026-09-01-owner-console-verso-os-checkpoint.md` — latest Owner Console source checkpoint, liquid-glass/mobile/access/lead/affiliate/egress lessons, Alpha Level 0 boundary, production lock, and controlled next sequence toward Versa OS.
 
 ## Library rule
 
