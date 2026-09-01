@@ -90,3 +90,16 @@ Keep live data snapshots deterministic during server rendering. Avoid displaying
 ## Reuse boundary
 
 Keep colors, module names, logos, and business-specific routes configurable. The shell and drawer behavior should remain customer-neutral.
+
+
+## Transparency and blur balance
+
+A panel is not visually “liquid glass” merely because it uses `backdrop-filter`. If the panel fill or page backdrop is too opaque, the underlying interface disappears and the result reads as a solid blue card.
+
+Use three coordinated layers:
+
+1. a light page backdrop that dims without hiding the page
+2. a translucent panel tint, generally well below full opacity
+3. blur, saturation, an inset edge highlight, and a subtle reflection layer
+
+Always judge the effect over real page content. The site’s shapes and colors should remain recognizable behind the panel, but softened enough that menu text stays readable. Provide an opaque fallback only for browsers that do not support backdrop filtering.
