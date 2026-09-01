@@ -99,7 +99,7 @@ A panel is not visually “liquid glass” merely because it uses `backdrop-filt
 Use three coordinated layers:
 
 1. a light page backdrop that dims without hiding the page
-2. a translucent panel tint, generally well below full opacity
+2. a translucent panel tint standardized between 20% and 50% opacity; use roughly 20–35% for ordinary panels and reserve 40–50% for the strongest readable surfaces
 3. blur, saturation, an inset edge highlight, and a subtle reflection layer
 
 Always judge the effect over real page content. The site’s shapes and colors should remain recognizable behind the panel, but softened enough that menu text stays readable. Provide an opaque fallback only for browsers that do not support backdrop filtering.
