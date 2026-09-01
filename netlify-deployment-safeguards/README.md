@@ -57,3 +57,17 @@ If Netlify reports that `SUPABASE_URL` was detected during secret scanning:
 2. Add `SECRETS_SCAN_OMIT_KEYS=SUPABASE_URL`.
 3. Clear the build cache and redeploy.
 4. Do not use `SECRETS_SCAN_OMIT_PATHS` unless a separate verified cache-only false positive remains.
+
+
+## Source-code failure triage
+
+Not every failed Netlify build is a Netlify configuration problem. Read the first compiler/parser error and inspect that source file before changing deployment settings.
+
+A malformed import can make the parser report an error many lines later. When an import block is open, verify that it closes before another `import` begins. After repairing the source:
+
+1. Run syntax/type/build validation for the changed server route.
+2. Commit the repair to the controlled branch.
+3. Use a private preview when testing is authorized.
+4. Keep production publishing locked until explicit approval.
+
+Do not weaken secret scanning, authentication, or environment controls to work around an ordinary source-code error.
