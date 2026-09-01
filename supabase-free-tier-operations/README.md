@@ -2,6 +2,10 @@
 
 Reusable WASCIK architecture for keeping small production projects inside Supabase's free-plan database, storage, and egress limits for as long as practical.
 
+## Files
+
+- `monthly-egress-and-request-pacing.md` - cycle-anchor calculations, first-cycle baselines, request-on-entry usage gauges, manual product audits, and low-egress media handling.
+
 ## Core rule
 
 Treat Supabase as application infrastructure, not as a permanent media warehouse.
