@@ -5,7 +5,8 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 ## Use this module for
 
 - server-only affiliate-network API adapters
-- category and multi-brand product discovery
+- provider/merchant category and multi-brand product discovery
+- price, availability, discount, product-type, and keyword filtering
 - exact per-brand x per-category batch quotas
 - owner-selected batch sizes with a safe maximum
 - session-only seen/skipped-product exclusion
@@ -37,6 +38,7 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 - `health-ignore-schema.sql` - service-role-only ignore, image-override, and original-product suppression tables.
 - `published-catalog-workflow.md` - durable state separation, placement, and confirmation rules.
 - `implementation-notes.md` - security, UX, provider limitations, and publication-gate rules.
+- `category-filter-review-queue.md` - provider taxonomy selection, layered filters, temporary candidates, Ready Products, manual audits, and low-egress ad handoff.
 
 ## Core rules
 
@@ -57,5 +59,7 @@ Customer-neutral patterns for a private owner console that retrieves real affili
 15. Do not imply that a general product API provides live ticket inventory. State/date search requires event data from the connected provider.
 16. Never flag generic “out of stock” wording found anywhere in a page; require product-specific availability evidence and honor positive InStock signals.
 17. Remove original products with reversible suppression records so company sections, categories, routes, and sort placement remain intact.
+18. Do not crawl the full catalog merely because the owner opened the page; run bounded health audits only through an intentional action or approved schedule.
+19. Keep search candidates temporary until the owner selects them into Ready Products; do not persist every result or copy every remote image into application storage.
 
 This module intentionally excludes customer names, account IDs, credentials, private emails, affiliate tracking IDs, and provider-specific tenant identifiers.
