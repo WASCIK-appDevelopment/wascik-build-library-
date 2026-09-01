@@ -10,6 +10,8 @@ Reusable patterns for private business consoles that combine authenticated owner
 - first-party outbound click analytics
 - site/page visit analytics
 - mobile-first owner workflows
+- shared liquid-glass navigation and stable detail drawers
+- secure low-friction owner access and repeat-lead preservation
 - Codespaces secret recovery
 - safe consolidation of divergent Git branches
 
@@ -19,6 +21,8 @@ Reusable patterns for private business consoles that combine authenticated owner
 - `first-party-analytics.md` - event architecture for outbound clicks and site visits without interfering with third-party attribution.
 - `codespaces-secret-recovery.md` - secure development-secret recovery for disposable Codespaces.
 - `branch-consolidation.md` - safe procedure for reconciling a long-lived feature branch with newer `main` work.
+- `mobile-liquid-glass-shell.md` - shared console shell, accessible drawers, command-center layout, and iPhone horizontal-drift prevention.
+- `secure-access-and-repeat-leads.md` - cookie-backed access, neutral recovery, contact-first capture, and append-only repeat attempts.
 - `TrackedOutboundLink.example.tsx` - reusable explicit outbound-link tracker.
 - `SiteVisitTracker.example.tsx` - reusable lightweight page-visit tracker.
 
@@ -31,5 +35,7 @@ Reusable patterns for private business consoles that combine authenticated owner
 5. Do not replace external affiliate URLs just to collect first-party click data. Record the event and preserve the original destination.
 6. Never store production secrets, tenant IDs, passwords, personal contact information, or customer-specific affiliate identifiers in this reusable library.
 7. Distinguish built, merged, deployed, live, verified, and measured states.
+8. Render every feature route through one authenticated shell so navigation, session, usage, and mobile behavior remain consistent.
+9. Persist a valid email or phone immediately; later attempts append history and notifications instead of overwriting the original lead.
 
 This module is intentionally customer-neutral. Production projects should inject their own brand, database, authentication policy, destinations, and environment values.
