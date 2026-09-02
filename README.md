@@ -49,6 +49,10 @@ Reusable foundation for:
 - affiliate brand and product/event campaigns
 - platform-aware CTAs
 - AI usage/rate-limit handling
+- full approved/published-product access through one guided workspace
+- fixed face/product-safe copy panels with independent QC flags
+- device-local picture recovery and iPhone save flows
+- post-ready written downloads without internal metadata
 
 Start with `social-ads-creative-system/README.md`.
 
@@ -175,6 +179,7 @@ Latest records:
 - `project-control/2026-08-25-digital-products-versa-foundation.md` — current WASCIK Digital Solutions author-product inventory, storefront checkpoint, and the controlled path for reusing the products in the Owner Console and future Versa application.
 - `project-control/2026-08-25-small-business-forms-bundle.md` — completed Small-Business Forms Bundle release, verified package and QA facts, Business Tools storefront placement, pricing state, repository checkpoint, and remaining checkout/deployment controls.
 - `project-control/2026-09-01-owner-console-verso-os-checkpoint.md` — latest Owner Console source checkpoint, liquid-glass/mobile/access/lead/affiliate/egress lessons, Alpha Level 0 boundary, production lock, and controlled next sequence toward Versa OS.
+- `project-control/2026-09-02-social-ads-known-good.md` — owner-verified Social Ads baseline covering full product access, guided generation, post-ready copy, protected face/product composition, device-local recovery, iPhone export, security, and production lock.
 
 ## Library rule
 
