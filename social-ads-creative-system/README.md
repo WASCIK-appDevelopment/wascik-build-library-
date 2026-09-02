@@ -16,6 +16,16 @@ Reusable architecture extracted from the WASCIK Social & Advertising owner-conso
 - AI usage/cost visibility
 - device-first finished-ad export with low-egress working media
 - mobile-first owner-console UX
+- full approved/published-product access from one ad workspace
+- device-local picture-ad recovery and iPhone export
+- post-ready written downloads without internal metadata
+- protected copy-panel validation for both faces and exact products
+
+## Included reusable artifacts
+
+- `local-picture-ad-store.example.ts` — one-current-draft IndexedDB Blob recovery without a database round-trip.
+- `post-ready-download.example.ts` — configurable publishable-copy export that excludes internal metadata.
+- `test-checklist.md` — private-preview coverage for product access, written posts, picture QC, device recovery, security, and iPhone behavior.
 
 ## Core architecture
 
@@ -220,33 +230,62 @@ Do not force fake product records merely to make a merchant appear in Social Ads
 
 A brand-campaign layer can pin generic approved catalog records such as gaming-service, welding-brand, or ticket-marketplace entries while preserving individual product/event records underneath.
 
-## Persistent owner workspace
+## Product-library-to-ad workspace
 
-Recommended private server-side state:
+Do not limit Social Ads to a small hard-coded merchant list. The owner should be able to reach the same dedicated ad workspace from:
 
-- current ad draft
-- selected product/service snapshot
-- platform
-- objective/creative notes
-- generated preview
-- owner/photo reference
-- voice attachment
-- generated result metadata
-- updated/status timestamps
+- the searchable Social Ads product library
+- a product thumbnail
+- a clear Create Ad control
+- the Published Products inventory
 
-The draft should survive navigation. Replacing the current draft should use an in-page confirmation panel rather than relying on browser-native confirm dialogs, especially on mobile Safari.
+Both entry points must pass the same normalized, approved product snapshot. Warn before replacing an unfinished draft.
+
+Use a guided mobile-first sequence:
+
+1. setup and product confirmation
+2. written social post
+3. picture ad
+4. optional voiceover
+5. improve, download, and finish
+
+Each stage should be regenerable without discarding unrelated completed work.
+
+## Split-state owner workspace
+
+Keep lightweight durable references separate from heavy temporary media.
+
+Recommended server-side or session-backed state:
+
+- current draft identifier
+- selected product/service snapshot or stable product ID
+- platform and objective
+- owner/photo reference ID
+- status and updated timestamp
+
+Recommended device-local working state:
+
+- composed picture-ad Blob
+- width, height, MIME type, draft/product key, and saved timestamp
+- temporary preview URL derived from the Blob
+
+Store only one current recovery asset when the product is designed around a single active ad. Restore it only when its draft/product key matches. Clear it on Finish/Clear. If IndexedDB is unavailable, keep the current in-memory result usable and show a friendly recovery warning.
+
+This split avoids sending a generated image to permanent storage and retrieving it again merely to continue editing or save it to the phone.
 
 For internal navigation in Codespaces/preview hosts, prefer framework-native routing over hard `window.location.assign()` calls so the app does not accidentally escape the forwarded preview host.
 
 ## Private media libraries
 
-Separate private storage for:
+Permanent cloud storage is optional, not the default working path.
 
-- owner photo library
-- finished ad library
-- ad-work-in-progress preview/voice assets
+Use private, server-authorized storage for assets the owner explicitly chooses to keep:
 
-Use server-authorized signed access, private buckets, and RLS/no-public-policy tables.
+- reusable owner photo library
+- explicitly saved finished-ad library
+- durable voice or campaign assets that must be available across devices
+
+Keep ordinary generated previews and recovery copies on the current device where practical. Use signed access, private buckets, and RLS/no-public-policy tables for anything permanently stored.
 
 For service-card image fitting, preserve the original upload and save a separate fitted derivative. Useful fitting controls include contain, fill, stretch, scale, independent width/height stretch, and X/Y position.
 
@@ -302,6 +341,86 @@ Reusable protections:
 - apply exponential backoff and honor `Retry-After` headers on HTTP 429 responses
 - avoid automatic retries that can multiply a rate-limit burst
 - display a friendly owner message explaining that the provider rate limit was reached temporarily
+
+## Written-post output contract
+
+Generate publishable copy as structured data, then normalize it deterministically.
+
+Recommended requirements:
+
+- short phone-friendly paragraphs
+- four to eight purposeful emojis when appropriate
+- emoji-led highlights instead of a dense wall of text
+- required CTA and required brand/affiliate hashtags inserted exactly once
+- affiliate profile-traffic CTA configured as `LINK IN BIO`
+- no unsupported price, discount, availability, specifications, guarantee, or personal experience
+
+The download action should build a post-ready text file from only:
+
+1. primary publishable copy
+2. the required CTA if it is not already present
+3. deduplicated publishable hashtags
+
+Exclude internal headings, category labels, product metadata, platform/destination notes, generation commentary, and voiceover instructions.
+
+## Fixed protected copy panel and visual safety
+
+A reliable mobile creative can reserve an explicit left-side panel and place protected visual subjects outside it.
+
+One proven portrait-layout starting point is approximately:
+
+- copy panel: x = 3–49%, y = 3–75%
+- protected person/product zone: primarily the right side of the canvas
+
+Treat these percentages as configurable layout tokens, not universal constants.
+
+When an owner photo is used:
+
+- place the visible head/face outside the copy panel
+- keep the exact featured product outside the copy panel
+- prefer a right-side owner/product composition
+- reject the scene if either protected subject enters the panel
+
+For a product-only creative, place the exact product deterministically in the designated product zone, such as the rightmost 44% of a portrait canvas.
+
+QC must report separate flags:
+
+- `faceInCopyZone`
+- `productInCopyZone`
+
+Do not combine them into one generic overlap score. A pass requires both flags to be false, along with the configured identity and product-fidelity thresholds.
+
+The compositor can place merchant, product title, product-specific hook/support, truthful benefit callouts, CTA, and required disclosure/hashtag inside the protected text panel after the image passes QC.
+
+## Preview interaction and iPhone save
+
+The composed canvas/image is an output preview, not a navigation control.
+
+Recommended mobile behavior:
+
+- disable preview pointer activation when no editing interaction is required
+- use `touch-action: pan-y` so vertical scrolling continues
+- disable accidental selection and touch callouts on the canvas
+- offer a large explicit Save Picture Ad to iPhone/Photos action
+- explain that iPhone users should choose Save Image from the share sheet when necessary
+- restore the local recovery Blob when the owner returns to the same draft
+- clear the recovery record only through an intentional Finish/Clear action
+
+## OpenAI request and security contract
+
+- Keep the provider key server-side and reuse the consuming project's deployed configuration.
+- Authenticate every owner generation route.
+- Send `store: false` or the provider's equivalent transient-storage control where supported.
+- Use strict structured output for planning/copy/QC contracts.
+- Serialize expensive stages and apply bounded backoff for HTTP 429 responses.
+- Honor `Retry-After` instead of multiplying a burst with immediate automatic retries.
+- Record feature usage privately without exposing organization-level credentials.
+- Load provider organization usage once when the authenticated console opens; refresh only on owner request.
+- Never copy a secret, affiliate account ID, private product record, or customer-specific URL into this reusable module.
+
+## Known-good baseline rule
+
+Once the owner verifies the complete workflow, record its source commit and preserve it as the baseline. Later improvements should be additive or versioned. Do not silently change the protected-zone contract, device-local recovery behavior, required CTA/hashtag policy, or post-ready download format.
 
 ## Versioned rollout pattern
 
