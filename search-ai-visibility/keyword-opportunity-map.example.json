@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "status": "baseline-without-connected-search-data",
+  "researchedOn": "YYYY-MM-DD",
+  "market": "Confirmed service market",
+  "scoring": {
+    "scale": "1-5",
+    "fields": {
+      "businessValue": "Likelihood that a qualified visit can become meaningful business",
+      "brandRelevance": "Fit with verified services and evidence",
+      "attainability": "Relative opportunity for the current site",
+      "readiness": "Ability to support the query with a credible page now"
+    },
+    "caveat": "Directional until recalibrated with search-performance and conversion data."
+  },
+  "opportunities": [
+    {
+      "id": "example-opportunity",
+      "priority": "P0",
+      "cluster": "Specific customer need and market",
+      "primaryQuery": "example high-intent query",
+      "supportingQueries": ["related query"],
+      "intent": "Commercial",
+      "targetPath": "/service-path",
+      "scores": {
+        "businessValue": 5,
+        "brandRelevance": 5,
+        "attainability": 3,
+        "readiness": 4,
+        "total": 17
+      },
+      "evidenceNeeded": ["Verified offer", "Relevant proof"],
+      "nextAction": "Strengthen one useful existing page before creating another page."
+    }
+  ],
+  "successSignals": [
+    "Qualified non-branded impressions",
+    "Clicks to genuine contact actions",
+    "Verified leads by source"
+  ]
+}
