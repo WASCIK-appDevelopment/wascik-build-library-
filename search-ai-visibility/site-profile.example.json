@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "status": "draft-for-owner-confirmation",
+  "lastUpdated": "YYYY-MM-DD",
+  "site": {
+    "name": "Business Name",
+    "url": "https://example.com",
+    "repository": "owner/repository",
+    "primaryLanguage": "en-US",
+    "ownerOrPublicContact": "Confirmed public name",
+    "publicEmail": "confirmed@example.com",
+    "publicPhone": "+1-000-000-0000",
+    "serviceArea": ["Primary local market", "Remote market if applicable"],
+    "deliveryModel": "service-area | storefront | hybrid"
+  },
+  "positioning": {
+    "primaryStatement": "Clear customer-facing value statement",
+    "audiences": ["Primary audience"],
+    "differentiators": ["Verified differentiator"]
+  },
+  "services": ["Verified public service"],
+  "verifiedOffers": {},
+  "contentRules": {
+    "mustDo": [
+      "Confirm business facts before publication",
+      "Use helpful original content",
+      "Use page-specific calls to action",
+      "Keep deployment behind the project's approval rule"
+    ],
+    "mustAvoid": [
+      "Unsupported guarantees",
+      "Invented reviews or results",
+      "Near-duplicate location pages",
+      "Publishing private addresses or credentials"
+    ]
+  },
+  "workflow": {
+    "productionBranch": "main",
+    "deployment": "Preview and verify first; publish only under the owner's approved rule.",
+    "publishingApprovalRequired": true
+  },
+  "confirmationsNeeded": [
+    "Primary service area",
+    "Current offers and prices",
+    "Priority service and search theme"
+  ]
+}
