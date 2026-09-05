@@ -2,6 +2,8 @@
 
 Reusable patterns extracted from the WASCIK Growth Engine work for turning a public website into a measurable acquisition system.
 
+For crawlability, search opportunity mapping, local profiles, AI citations, structured data, `llms.txt`, authority development, and the continuing measurement loop, use the complementary `search-ai-visibility/` module.
+
 ## Use this module for
 
 - conversion-focused service funnels
