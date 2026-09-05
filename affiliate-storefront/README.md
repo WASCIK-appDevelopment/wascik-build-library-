@@ -11,6 +11,10 @@ Customer-neutral Next.js/React building blocks extracted from the WASCIK affilia
 - purchase and ticket-resale disclosures
 - reliable local-image guidance
 - implementation checklist for multi-brand affiliate hubs
+- shared database-driven merchant routes controlled by a private publication console
+- authorized manual-import workflow for merchants without provider feeds
+
+See `dynamic-console-published-storefront.md` for the shared route, publication-state, no-feed, manual-import, and deployment-control pattern.
 
 ## Suggested structure in a customer project
 

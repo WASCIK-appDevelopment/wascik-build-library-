@@ -144,6 +144,10 @@ Reusable foundation for:
 - persistent product/brand warning ignores
 - merchant metadata thumbnail repair
 - separate ready-to-publish and complete published-product inventories
+- Impact/Awin network separation and full-catalog pagination
+- controlled category taxonomies that reject product/event/SKU values
+- advertiser aliases, no-feed states, and authorized manual import
+- contract-aware promotion permissions and staged partnership acceptance
 
 Start with `affiliate-search-discovery/README.md`.
 
@@ -157,6 +161,8 @@ Reusable foundation for:
 - product and event cards
 - affiliate and ticket-resale disclosures
 - reliable local-image handling in Next.js
+- shared database-driven merchant routes
+- truthful no-feed states and authorized manual imports
 
 Start with `affiliate-storefront/README.md`.
 
@@ -198,6 +204,7 @@ Latest records:
 - `project-control/2026-09-01-owner-console-verso-os-checkpoint.md` — latest Owner Console source checkpoint, liquid-glass/mobile/access/lead/affiliate/egress lessons, Alpha Level 0 boundary, production lock, and controlled next sequence toward Versa OS.
 - `project-control/2026-09-02-social-ads-known-good.md` — owner-verified Social Ads baseline covering full product access, guided generation, post-ready copy, protected face/product composition, device-local recovery, iPhone export, security, and production lock.
 - `project-control/2026-09-05-growth-engine-search-ai-visibility.md` — consolidated three-conversation Growth Engine checkpoint, September 3 AI-search implementation, deployment boundary, current visibility gap, and controlled next sequence.
+- `project-control/2026-09-05-affiliate-search-and-partnerships.md` — affiliate network/search corrections, every-brand audit, no-feed workflow, promotion restrictions, Awin partnerships, Rewarx conditional evaluation, and deployment boundary.
 
 ## Library rule
 
