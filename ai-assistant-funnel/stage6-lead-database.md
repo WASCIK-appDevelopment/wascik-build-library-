@@ -6,10 +6,11 @@ Reusable pattern for turning an AI website representative into a durable busines
 
 1. Assistant maintains short session memory in the browser.
 2. Server-side qualifier extracts project type, business/project context, and at least one contact method.
-3. Once the lead becomes `handoff-ready`, the server persists it to a private database.
-4. Database record stores source path, referrer, summary, recent conversation, optional budget/timeline, qualification score, and workflow status.
-5. Notification email should contain only a minimal alert. Full lead details remain in the private owner console/database.
-6. Owner workflow can advance `new -> contacted -> in_progress -> closed`.
+3. Once the lead becomes `handoff-ready`, the server attempts an owner notification through an independent email provider before, or separately from, database persistence.
+4. The server then persists the lead to a private database when that service is available.
+5. Database record stores source path, referrer, summary, recent conversation, optional budget/timeline, qualification score, and workflow status.
+6. If email succeeds but persistence fails, return a distinct accepted/emailed-but-not-saved result so the visitor is not asked to resubmit and the owner knows the database copy is missing.
+7. Owner workflow can advance `new -> contacted -> in_progress -> closed` when database storage is available.
 
 ## Recommended table fields
 
@@ -57,4 +58,8 @@ On iPhone Safari, form inputs below 16px can trigger automatic page zoom. Use at
 
 ## Alert-email rule
 
-The email is an alert, not the lead record. Prefer a short message such as: a new website lead was captured, the source page, and a prompt to sign into the private owner console. Do not include the entire conversation or unnecessary personal data in the email.
+The database remains the preferred system of record, but an alert must not depend on a successful database write. This preserves a contact path during a database outage.
+
+Send only the minimum actionable fields supplied for the handoff: name, email and/or phone, business or project type, goals/features, optional budget/timeline, source page, and a short summary. Do not include the entire conversation or unrelated personal data.
+
+Keep the recipient list fixed or allowlisted in server configuration supplied by the consuming project. Never accept arbitrary recipients from the browser, and never hard-code customer addresses in this reusable module. Record `alert_sent_at` after persistence when possible; treat email-delivered/database-failed as its own observable outcome.
