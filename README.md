@@ -205,6 +205,7 @@ Latest records:
 - `project-control/2026-09-02-social-ads-known-good.md` — owner-verified Social Ads baseline covering full product access, guided generation, post-ready copy, protected face/product composition, device-local recovery, iPhone export, security, and production lock.
 - `project-control/2026-09-05-growth-engine-search-ai-visibility.md` — consolidated three-conversation Growth Engine checkpoint, September 3 AI-search implementation, deployment boundary, current visibility gap, and controlled next sequence.
 - `project-control/2026-09-05-affiliate-search-and-partnerships.md` — affiliate network/search corrections, every-brand audit, no-feed workflow, promotion restrictions, Awin partnerships, Rewarx conditional evaluation, and deployment boundary.
+- `project-control/2026-09-07-offline-media-lead-delivery-and-netlify.md` — device-first photo handling, database-independent lead alerts, public contact-email migration, verified Netlify publication, Supabase test boundary, and the open Social Ads generator incident.
 
 ## Library rule
 
