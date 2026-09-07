@@ -289,6 +289,20 @@ Keep ordinary generated previews and recovery copies on the current device where
 
 For service-card image fitting, preserve the original upload and save a separate fitted derivative. Useful fitting controls include contain, fill, stretch, scale, independent width/height stretch, and X/Y position.
 
+### Direct-use versus saved phone photos
+
+Make the owner's intent explicit before an uploaded phone photo enters any library:
+
+- **Use once from phone** normalizes the selected image for the current generator session but does not write it to cloud storage or the device photo library.
+- **Save to My Photos** attempts the private cloud library first and falls back to a durable IndexedDB device library when the cloud service is unavailable.
+- Label every saved photo by source, such as `Supabase` or `This device`, so the owner knows whether it follows them across devices.
+- Merge cloud and device results in the picker, deduplicate by stable source ID or content fingerprint, and keep newest items first.
+- Remove and clear actions must delete only from the asset's actual source. A cloud failure must not prevent the owner from managing device-only photos.
+
+Normalize camera formats and orientation before either path reaches the generator. Keep the original selection in memory until normalization succeeds, and report conversion errors without silently saving a partial or invalid image.
+
+See `device-photo-library.example.ts` for a customer-neutral IndexedDB implementation.
+
 ## Brand/category profiles
 
 Maintain a resolver with:
