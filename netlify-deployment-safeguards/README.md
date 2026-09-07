@@ -25,17 +25,29 @@ Equivalent Netlify UI configuration:
 
 ## Security boundary
 
-Safe to omit from secret scanning:
+Potentially safe to omit from secret scanning after value-by-value verification:
 
 - `SUPABASE_URL` — public project endpoint
+- public publisher/account identifiers that are intentionally present in browser-visible links
+- sender or recipient email-address configuration that is not used as an authentication secret
+
+Exempt the environment-variable **key**, never a copied secret value. Every omitted key must be documented as intentionally public or non-credential configuration.
 
 Never omit or expose:
 
 - `SUPABASE_SECRET_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
 - API tokens, console keys, passwords, or private signing secrets
+- email-provider API keys such as `RESEND_API_KEY`
 
 Do not disable Netlify secret scanning globally. Omit only known public identifiers.
+
+## Build and publication discipline
+
+- Batch related source edits into one reviewed commit when practical. Git-connected sites may start a build for every pushed commit, consuming build credits even while automatic production publishing is locked.
+- Treat build success and production publication as separate states. With Auto Publishing Locked, inspect the successful candidate deploy and publish it manually only after explicit owner approval.
+- After publication, verify the canonical domain rather than relying only on a preview URL or deploy badge.
+- Record the deploy ID or commit SHA used for the verification so a later rollback or incident review has an exact checkpoint.
 
 ## Production environment checklist
 
