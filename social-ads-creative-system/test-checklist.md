@@ -41,6 +41,12 @@ Use this checklist for a private preview or local development build before produ
 
 ## Device recovery and iPhone behavior
 
+- [ ] Use Once from Phone makes the selected photo available to the current generator without adding it to any photo library.
+- [ ] Save to My Photos persists intentionally and reports whether the result was saved in cloud storage or on this device.
+- [ ] When the cloud photo service is unavailable, Save to My Photos falls back to IndexedDB and remains usable after leaving and returning to the page.
+- [ ] Cloud and device photos appear together without duplicate cards and with newest items first.
+- [ ] Each saved photo clearly identifies its storage source.
+- [ ] Remove and Clear delete only from the selected photo's real source and still work for device photos while the cloud service is offline.
 - [ ] A completed composed picture is stored as a Blob in IndexedDB on the current device.
 - [ ] Returning to the same draft restores the temporary picture without a database fetch.
 - [ ] A different draft cannot accidentally restore the previous product's picture.
