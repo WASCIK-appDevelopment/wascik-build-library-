@@ -192,6 +192,23 @@ Reusable guidance for:
 
 Start with `netlify-deployment-safeguards/README.md`.
 
+### Versa OS + Alpha Platform Architecture
+Path: `versa-os-alpha-platform/`
+
+Reusable foundation for:
+
+- Versa Core, Business Core, and Industry Workspace separation;
+- V-Core Portal and compact Versa identity rules;
+- configurable business templates without losing common product identity;
+- system-wide liquid-glass workspace design conventions;
+- Alpha conversational states and staged capability growth;
+- organization knowledge, permissions, and auditable action boundaries;
+- shared Alpha intelligence across related products through product-specific contexts and tools;
+- manual, batched production-deployment workflows that preserve metered build resources;
+- commercialization from one real operating-business installation into reusable customer deployments.
+
+Start with `versa-os-alpha-platform/README.md`.
+
 ## Project control records
 
 Operational records capture WASCIK-specific project state without storing credentials or private secrets.
@@ -207,6 +224,7 @@ Latest records:
 - `project-control/2026-09-05-affiliate-search-and-partnerships.md` — affiliate network/search corrections, every-brand audit, no-feed workflow, promotion restrictions, Awin partnerships, Rewarx conditional evaluation, and deployment boundary.
 - `project-control/2026-09-07-offline-media-lead-delivery-and-netlify.md` — device-first photo handling, database-independent lead alerts, public contact-email migration, verified Netlify publication, Supabase test boundary, and the open Social Ads generator incident.
 - `project-control/2026-09-09-checkum-portfolio-prototype-checkpoint.md` — CheckUm portfolio build, controlling brand treatment, implemented demo flows, safety boundary, realistic production-completion assessment, founder/development responsibility split, preview procedure, and exact continuation point.
+- `project-control/2026-09-10-versa-os-alpha-master-control.md` — current controlling Versa OS and Alpha product architecture, V-Core identity, portal/authentication flow, compact Versa/Alpha visual controls, global WASCIK navigation, workspace-polish rules, configurable business-template architecture, CheckUm relationship, cross-platform Alpha direction, deployment-credit policy, current mobile portal issue, and exact next-work sequence.
 
 ## Library rule
 
